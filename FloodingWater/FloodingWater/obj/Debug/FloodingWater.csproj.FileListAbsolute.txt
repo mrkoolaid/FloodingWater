@@ -5,10 +5,13 @@ c:\users\m1406_000\documents\visual studio 2015\Projects\FloodingWater\FloodingW
 c:\users\m1406_000\documents\visual studio 2015\Projects\FloodingWater\FloodingWater\obj\Debug\FloodingWater.csproj.GenerateResource.Cache
 c:\users\m1406_000\documents\visual studio 2015\Projects\FloodingWater\FloodingWater\obj\Debug\FloodingWater.exe
 c:\users\m1406_000\documents\visual studio 2015\Projects\FloodingWater\FloodingWater\obj\Debug\FloodingWater.pdb
-C:\Users\BIGDADDY\Desktop\projects\FloodingWater\FloodingWater\FloodingWater\obj\Debug\FloodingWater.exe
-C:\Users\BIGDADDY\Desktop\projects\FloodingWater\FloodingWater\FloodingWater\obj\Debug\FloodingWater.pdb
+C:\Users\BIGDADDY\Desktop\projects\FloodingWater\FloodingWater\FloodingWater\bin\Debug\FloodingWater.exe.manifest
+C:\Users\BIGDADDY\Desktop\projects\FloodingWater\FloodingWater\FloodingWater\bin\Debug\FloodingWater.application
 C:\Users\BIGDADDY\Desktop\projects\FloodingWater\FloodingWater\FloodingWater\bin\Debug\FloodingWater.exe
 C:\Users\BIGDADDY\Desktop\projects\FloodingWater\FloodingWater\FloodingWater\bin\Debug\FloodingWater.pdb
-C:\Users\BIGDADDY\Desktop\projects\FloodingWater\FloodingWater\FloodingWater\obj\Debug\FloodingWater.csprojResolveAssemblyReference.cache
 C:\Users\BIGDADDY\Desktop\projects\FloodingWater\FloodingWater\FloodingWater\obj\Debug\FloodingWater.Properties.Resources.resources
 C:\Users\BIGDADDY\Desktop\projects\FloodingWater\FloodingWater\FloodingWater\obj\Debug\FloodingWater.csproj.GenerateResource.Cache
+C:\Users\BIGDADDY\Desktop\projects\FloodingWater\FloodingWater\FloodingWater\obj\Debug\FloodingWater.exe.manifest
+C:\Users\BIGDADDY\Desktop\projects\FloodingWater\FloodingWater\FloodingWater\obj\Debug\FloodingWater.application
+C:\Users\BIGDADDY\Desktop\projects\FloodingWater\FloodingWater\FloodingWater\obj\Debug\FloodingWater.exe
+C:\Users\BIGDADDY\Desktop\projects\FloodingWater\FloodingWater\FloodingWater\obj\Debug\FloodingWater.pdb
