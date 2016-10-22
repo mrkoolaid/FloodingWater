@@ -9,13 +9,13 @@ using System.Threading;
 namespace FloodingWater
 {
     class Program
-    {
-    
+    {    
         static void Main(string[] args)
         {
             string ip = "127.0.0.1";
             int pbytes = 1000;
             int threads = 50;
+
             while (true)
             {
                 Console.ForegroundColor = ConsoleColor.Cyan;
@@ -23,20 +23,37 @@ namespace FloodingWater
                 Console.WriteLine("Loading....");
                 Console.ForegroundColor = ConsoleColor.White;
                 
-                Console.WriteLine("IP: ");
+                Console.Write("IP: ");
                 ip = Console.ReadLine();
-                Console.WriteLine("Packet Size(in kilobytes): ");
+
+                Console.Write("Packet Size(in kilobytes): ");
                 pbytes = int.Parse(Console.ReadLine());
-                Console.WriteLine("AMOUNT OF THREADS: ");
+
+                Console.Write("AMOUNT OF THREADS: ");
                 threads = int.Parse(Console.ReadLine());
-                for(int i = 0;i<threads;i++)
+
+                //make sure we have an IP to work with
+                if (ip.Length > 0 && ip != null)
                 {
+                    //
+                }
+
+                for (int i = 0;i<threads;i++)
+                {
+                    Console.Clear();
                     var t = new Thread(() => Flood(ip,pbytes));
                     t.Start();
                 }
+
                 Console.WriteLine("Write 'Q' to quit.");
-                if (Console.ReadLine() == "Q")
-                    break;
+
+                switch(Console.ReadLine())
+                {
+                    case "Q":
+                        //cleanup and quit
+                        Environment.Exit(0);
+                        break;
+                }
             }
 
         }
@@ -62,12 +79,18 @@ namespace FloodingWater
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine("Error!,Make sure you put valid info");
+                    Console.WriteLine(ex.Message);
+                    //Console.WriteLine("Error!, Make sure you put valid info");
                     break;
                 }
             }
         }
 
         
+    }
+
+    class FloodingWater
+    {
+        //
     }
 }
