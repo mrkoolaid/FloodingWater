@@ -7,4 +7,4 @@ Paypal: muttpaypal@gmail.com
 Bitcoin: 1HbG9fVSGe6eANzACN88ZCiTDBu5T3dPJk
 
 # Contributors
-mrkoolaid: https://github.com/mrkoolaid
+mrkoolaid: https://hackforums.net/member.php?action=profile&uid=3233832
